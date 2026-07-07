@@ -30,17 +30,19 @@ npx serve .
 
 ## Deployment (GitHub Pages)
 
-1. Push this repo to [github.com/puzzlestats/puzzlestats.github.io](https://github.com/puzzlestats/puzzlestats.github.io)
-2. Go to **Settings → Pages**
-3. Set source to **Deploy from branch** → `main` → `/ (root)`
-4. Ensure the `CNAME` file is present for the custom domain `puzzlestats.app`
-5. Configure DNS for `puzzlestats.app`:
-   - `A` records pointing to GitHub Pages IPs, or
-   - `CNAME` record for `www` pointing to `puzzlestats.github.io`
+Repo: [github.com/puzzlestats/puzzlestats.github.io](https://github.com/puzzlestats/puzzlestats.github.io)
 
-Default GitHub Pages URL (before custom domain): **https://puzzlestats.github.io/**
+### One-time setup in GitHub
 
-GitHub Pages will serve the site over HTTPS automatically once DNS propagates.
+1. Open **Settings → Pages**
+2. Under **Build and deployment**, set **Source** to **GitHub Actions** (not "Deploy from a branch")
+3. Push to `main` — the workflow in `.github/workflows/pages.yml` deploys automatically
+4. Under **Custom domain**, enter `puzzlestats.app` and save
+5. Enable **Enforce HTTPS** once DNS is verified
+
+Default GitHub Pages URL: **https://puzzlestats.github.io/**
+
+If you see "There isn't a GitHub Pages site here", Pages is not enabled yet — complete step 2 above, then check **Actions** for a green deploy run.
 
 ## Before Launch
 
