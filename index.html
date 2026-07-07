@@ -11,7 +11,7 @@
   <meta name="googlebot" content="index, follow">
   <meta name="application-name" content="Puzzle Stats">
   <meta name="apple-mobile-web-app-title" content="Puzzle Stats">
-  <meta name="theme-color" content="#0f1117">
+  <meta name="theme-color" content="#faf7f2">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/favicon.svg">
   <link rel="canonical" href="https://puzzlestats.app/">
@@ -32,7 +32,7 @@
   <meta name="twitter:image:alt" content="Puzzle Stats — Track your puzzle solves">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <script type="application/ld+json">
   {
@@ -102,7 +102,7 @@
   <header class="site-header">
     <div class="container">
       <a href="/" class="logo" aria-label="Puzzle Stats home">
-        <img src="/assets/favicon.svg" alt="Puzzle Stats logo" class="logo-icon" width="32" height="32">
+        <img src="/assets/favicon.svg" alt="" class="logo-icon" width="26" height="26">
         Puzzle Stats
       </a>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -123,156 +123,116 @@
 
   <main>
     <section class="hero">
-      <div class="container hero-content">
-        <span class="hero-badge">Now on iOS</span>
-        <h1>Your jigsaw puzzle journey,<br><span>timed to perfection</span></h1>
-        <p class="hero-subtitle">
-          Catalog your collection, time every solve, capture milestones with a tap, and watch your stats improve — all without an account or internet connection.
+      <div class="container">
+        <ul class="pill-row" aria-label="Highlights">
+          <li>Offline</li>
+          <li>No account</li>
+          <li>One-tap markers</li>
+          <li>iCloud optional</li>
+        </ul>
+        <h1>Time your solves. Know your stats.</h1>
+        <p class="hero-lead">
+          A puzzle timer and collection tracker for people who actually finish the border first. Catalog, time, mark milestones — no signup, no wifi required.
         </p>
         <div class="hero-actions">
-          <a href="#" class="app-store-badge" aria-label="Download on the App Store">
+          <a href="#" class="app-store-link" aria-label="Download on the App Store">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
             </svg>
-            <span class="label">
-              <span class="small">Download on the</span><br>
-              <span class="large">App Store</span>
-            </span>
+            App Store
           </a>
-          <a href="#features" class="btn btn-secondary">Learn more</a>
+          <a href="#features" class="text-link">See what it does</a>
         </div>
-      </div>
-    </section>
-
-    <section class="section highlights">
-      <div class="container">
-        <div class="highlight-list">
-          <div class="highlight-item">
-            <strong>Offline</strong>
-            <span>Works without internet</span>
-          </div>
-          <div class="highlight-item">
-            <strong>1-tap</strong>
-            <span>Markers during solves</span>
-          </div>
-          <div class="highlight-item">
-            <strong>No account</strong>
-            <span>Required to get started</span>
-          </div>
-          <div class="highlight-item">
-            <strong>iCloud</strong>
-            <span>Optional device sync</span>
-          </div>
-        </div>
+        <p class="hero-note">Free on iOS. Android coming later.</p>
       </div>
     </section>
 
     <section class="section" id="features">
       <div class="container">
-        <div class="section-header">
-          <h2>Built for speed puzzlers</h2>
-          <p>Every feature is designed around the way you actually puzzle — fast during solves, detailed afterward.</p>
-        </div>
-        <div class="features-grid">
-          <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">📚</div>
-            <h3>Puzzle Catalog</h3>
-            <p>Build your collection with title, manufacturer, piece count, and type. Scan barcodes to prefill from our bundled catalog or UPC lookup.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">⏱️</div>
-            <h3>Precision Timer</h3>
-            <p>Large, distraction-free controls for start, pause, resume, and finish. Screen stays awake during active solves. Landscape mode supported.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">📍</div>
-            <h3>Milestone Markers</h3>
-            <p>Tap to add markers mid-solve — no typing required. Label them afterward: border complete, halfway point, last 100 pieces, and more.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">🔄</div>
-            <h3>Flip Time Tracking</h3>
-            <p>Record when you finish flipping pieces. Track assembly time separately from total solve time as a first-class statistic.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">📊</div>
-            <h3>Statistics &amp; Records</h3>
-            <p>Best times, averages, improvement trends, and personal records by piece count. Compare each solve to your history on the same puzzle.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">⭐</div>
+        <p class="section-label">Features</p>
+        <h2>Fast while you puzzle. Detailed when you're done.</h2>
+        <ul class="feature-list">
+          <li>
+            <h3>Puzzle catalog</h3>
+            <p>Title, manufacturer, piece count, type. Scan a barcode to prefill from our catalog or a UPC lookup.</p>
+          </li>
+          <li>
+            <h3>Stopwatch timer</h3>
+            <p>Big buttons. Screen stays on. Pause, resume, finish. Works in landscape when you're mid-table.</p>
+          </li>
+          <li>
+            <h3>Milestone markers</h3>
+            <p>Tap to drop a marker mid-solve — no typing. Label them after: border done, halfway, last hundred pieces.</p>
+          </li>
+          <li>
+            <h3>Flip time</h3>
+            <p>Record when the flipping's done. Assembly time tracked separately from total solve time.</p>
+          </li>
+          <li>
+            <h3>Stats &amp; records</h3>
+            <p>Best times, averages, trends. See how this solve compares to every previous attempt on the same puzzle.</p>
+          </li>
+          <li>
             <h3>Ratings</h3>
-            <p>Rate difficulty and fun on a 1–10 scale after each solve. Track what you love and what challenges you most.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">📷</div>
-            <h3>Photos &amp; Video</h3>
-            <p>Capture box photos and completed puzzle shots. Optionally record solve videos or timelapses with the device camera.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">⚡</div>
-            <h3>Quick Timer</h3>
-            <p>Start timing instantly without picking a puzzle. Assign the solve to your collection later from the home screen.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">📅</div>
-            <h3>Date-Only Tracking</h3>
-            <p>Not racing the clock? Track start and end dates without a stopwatch — perfect for casual puzzlers who still want a history.</p>
-          </article>
-        </div>
+            <p>Score difficulty and fun 1–10 after each solve. Figure out what you actually enjoy building.</p>
+          </li>
+          <li>
+            <h3>Photos &amp; video</h3>
+            <p>Box shots, finished puzzle pics. Optional timelapse or solve recording from the camera.</p>
+          </li>
+          <li>
+            <h3>Quick timer</h3>
+            <p>Start timing before you've picked a puzzle. Assign the solve to your collection later.</p>
+          </li>
+          <li>
+            <h3>Date-only mode</h3>
+            <p>Not racing? Track start and finish dates without a stopwatch. Good for the slow-and-steady crowd.</p>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <section class="section" id="pricing" style="background: var(--bg-elevated); border-block: 1px solid var(--border);">
+    <section class="section" id="pricing">
       <div class="container">
-        <div class="section-header">
-          <h2>Simple pricing</h2>
-          <p>Core features are free. Upgrade when you want more.</p>
-        </div>
-        <div class="pricing-cards">
-          <div class="pricing-card">
-            <h3>Free</h3>
-            <div class="price">$0</div>
-            <p class="price-note">Full puzzle catalog, timing, markers, stats, and optional iCloud sync</p>
-          </div>
-          <div class="pricing-card featured">
-            <h3>Premium Annual</h3>
-            <div class="price">$9.99<span style="font-size: 1rem; font-weight: 500;">/yr</span></div>
-            <p class="price-note">Advanced features as they launch</p>
-          </div>
-          <div class="pricing-card">
-            <h3>Premium Monthly</h3>
-            <div class="price">$0.99<span style="font-size: 1rem; font-weight: 500;">/mo</span></div>
-            <p class="price-note">Flexible monthly billing</p>
-          </div>
-        </div>
-        <p class="pricing-note">A lifetime purchase option is also available. Premium features are still being defined — subscriptions unlock future capabilities like cloud sync, video backup, and advanced analytics.</p>
+        <p class="section-label">Pricing</p>
+        <h2>Most of it is free.</h2>
+        <ul class="pricing-list">
+          <li>
+            <span class="tier">Free</span>
+            <span class="amount">$0</span>
+          </li>
+          <li>
+            <span class="tier">Premium monthly</span>
+            <span class="amount">$0.99/mo</span>
+          </li>
+          <li>
+            <span class="tier">Premium annual</span>
+            <span class="amount">$9.99/yr</span>
+          </li>
+          <li>
+            <span class="tier">Lifetime</span>
+            <span class="amount">One-time</span>
+          </li>
+        </ul>
+        <p class="pricing-note">Catalog, timing, markers, and stats are free. Premium unlocks future stuff — cloud sync, video backup, deeper analytics. Still figuring out the final list.</p>
       </div>
     </section>
 
-    <section class="cta">
+    <section class="closing">
       <div class="container">
-        <div class="cta-box">
-          <h2>Ready to track your next solve?</h2>
-          <p>Download Puzzle Stats and start building your puzzle history today.</p>
-          <a href="#" class="btn btn-primary">Get Puzzle Stats</a>
-        </div>
+        <p>Go time your next puzzle.</p>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <a href="/" class="logo" aria-label="Puzzle Stats home">
-        <img src="/assets/favicon.svg" alt="Puzzle Stats logo" class="logo-icon" width="28" height="28">
-        Puzzle Stats
-      </a>
+      <p class="footer-copy">&copy; 2026 Puzzle Stats</p>
       <ul class="footer-links">
-        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
         <li><a href="support.html">Support</a></li>
-        <li><a href="mailto:support@puzzlestats.app">Contact</a></li>
+        <li><a href="mailto:support@puzzlestats.app">support@puzzlestats.app</a></li>
       </ul>
-      <p class="footer-copy">&copy; 2026 Puzzle Stats. All rights reserved.</p>
     </div>
   </footer>
 
