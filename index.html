@@ -11,7 +11,7 @@
   <meta name="googlebot" content="index, follow">
   <meta name="application-name" content="Puzzle Stats">
   <meta name="apple-mobile-web-app-title" content="Puzzle Stats">
-  <meta name="theme-color" content="#faf7f2">
+  <meta name="theme-color" content="#fffef9">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/favicon.svg">
   <link rel="canonical" href="https://puzzlestats.app/">
@@ -30,9 +30,6 @@
   <meta name="twitter:description" content="Catalog puzzles, time your solves, record milestones, and analyze your performance. Free on iOS.">
   <meta name="twitter:image" content="https://puzzlestats.app/assets/og-image.svg">
   <meta name="twitter:image:alt" content="Puzzle Stats — Track your puzzle solves">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <script type="application/ld+json">
   {
@@ -102,13 +99,11 @@
   <header class="site-header">
     <div class="container">
       <a href="/" class="logo" aria-label="Puzzle Stats home">
-        <img src="/assets/favicon.svg" alt="" class="logo-icon" width="26" height="26">
+        <span class="puzzle-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
         Puzzle Stats
       </a>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
       <nav>
         <ul class="nav-links">
@@ -124,69 +119,73 @@
   <main>
     <section class="hero">
       <div class="container">
-        <ul class="pill-row" aria-label="Highlights">
-          <li>Offline</li>
-          <li>No account</li>
-          <li>One-tap markers</li>
-          <li>iCloud optional</li>
-        </ul>
-        <h1>Time your solves. Know your stats.</h1>
-        <p class="hero-lead">
-          A puzzle timer and collection tracker for people who actually finish the border first. Catalog, time, mark milestones — no signup, no wifi required.
-        </p>
+        <h1>Time your solves.<br>Track your stats.</h1>
+        <p class="hero-lead">Puzzle timer and collection log for iOS. Works offline. No account.</p>
         <div class="hero-actions">
-          <a href="#" class="app-store-link" aria-label="Download on the App Store">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-            </svg>
-            App Store
-          </a>
-          <a href="#features" class="text-link">See what it does</a>
+          <a href="#" class="app-store-link">Get it on the App Store</a>
+          <a href="#features" class="text-link">What's inside →</a>
         </div>
-        <p class="hero-note">Free on iOS. Android coming later.</p>
+        <p class="hero-note">Free. Android later.</p>
       </div>
     </section>
 
     <section class="section" id="features">
       <div class="container">
-        <p class="section-label">Features</p>
-        <h2>Fast while you puzzle. Detailed when you're done.</h2>
+        <h2>What it does</h2>
         <ul class="feature-list">
           <li>
-            <h3>Puzzle catalog</h3>
-            <p>Title, manufacturer, piece count, type. Scan a barcode to prefill from our catalog or a UPC lookup.</p>
+            <div>
+              <h3>Catalog</h3>
+              <p>Log puzzles with title, brand, piece count. Scan barcodes to autofill.</p>
+            </div>
           </li>
           <li>
-            <h3>Stopwatch timer</h3>
-            <p>Big buttons. Screen stays on. Pause, resume, finish. Works in landscape when you're mid-table.</p>
+            <div>
+              <h3>Timer</h3>
+              <p>Big stopwatch. Screen stays awake. Pause, resume, finish. Landscape works.</p>
+            </div>
           </li>
           <li>
-            <h3>Milestone markers</h3>
-            <p>Tap to drop a marker mid-solve — no typing. Label them after: border done, halfway, last hundred pieces.</p>
+            <div>
+              <h3>Markers</h3>
+              <p>Tap mid-solve to drop a marker. Name them after — border, halfway, last 100.</p>
+            </div>
           </li>
           <li>
-            <h3>Flip time</h3>
-            <p>Record when the flipping's done. Assembly time tracked separately from total solve time.</p>
+            <div>
+              <h3>Flip time</h3>
+              <p>Hit a button when flipping's done. Assembly time tracked separately.</p>
+            </div>
           </li>
           <li>
-            <h3>Stats &amp; records</h3>
-            <p>Best times, averages, trends. See how this solve compares to every previous attempt on the same puzzle.</p>
+            <div>
+              <h3>Stats</h3>
+              <p>Best, average, trends. Compare this solve to every past attempt on the same puzzle.</p>
+            </div>
           </li>
           <li>
-            <h3>Ratings</h3>
-            <p>Score difficulty and fun 1–10 after each solve. Figure out what you actually enjoy building.</p>
+            <div>
+              <h3>Ratings</h3>
+              <p>Score difficulty and fun 1–10. Figure out what you actually like building.</p>
+            </div>
           </li>
           <li>
-            <h3>Photos &amp; video</h3>
-            <p>Box shots, finished puzzle pics. Optional timelapse or solve recording from the camera.</p>
+            <div>
+              <h3>Photos &amp; video</h3>
+              <p>Box shots, finished pics. Optional timelapse recording.</p>
+            </div>
           </li>
           <li>
-            <h3>Quick timer</h3>
-            <p>Start timing before you've picked a puzzle. Assign the solve to your collection later.</p>
+            <div>
+              <h3>Quick timer</h3>
+              <p>Start before you've picked a puzzle. Sort it out later.</p>
+            </div>
           </li>
           <li>
-            <h3>Date-only mode</h3>
-            <p>Not racing? Track start and finish dates without a stopwatch. Good for the slow-and-steady crowd.</p>
+            <div>
+              <h3>Date-only mode</h3>
+              <p>No stopwatch — just log start and finish dates.</p>
+            </div>
           </li>
         </ul>
       </div>
@@ -194,54 +193,40 @@
 
     <section class="section" id="pricing">
       <div class="container">
-        <p class="section-label">Pricing</p>
-        <h2>Most of it is free.</h2>
+        <h2>Pricing</h2>
         <ul class="pricing-list">
-          <li>
-            <span class="tier">Free</span>
-            <span class="amount">$0</span>
-          </li>
-          <li>
-            <span class="tier">Premium monthly</span>
-            <span class="amount">$0.99/mo</span>
-          </li>
-          <li>
-            <span class="tier">Premium annual</span>
-            <span class="amount">$9.99/yr</span>
-          </li>
-          <li>
-            <span class="tier">Lifetime</span>
-            <span class="amount">One-time</span>
-          </li>
+          <li><span>Free</span><span class="amount">$0</span></li>
+          <li><span>Monthly</span><span class="amount">$0.99</span></li>
+          <li><span>Annual</span><span class="amount">$9.99</span></li>
+          <li><span>Lifetime</span><span class="amount">TBD</span></li>
         </ul>
-        <p class="pricing-note">Catalog, timing, markers, and stats are free. Premium unlocks future stuff — cloud sync, video backup, deeper analytics. Still figuring out the final list.</p>
+        <p class="pricing-note">Everything important is free. Premium is for future extras — sync, video backup, analytics.</p>
       </div>
     </section>
 
     <section class="closing">
       <div class="container">
-        <p>Go time your next puzzle.</p>
+        <p>Go finish a puzzle.</p>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p class="footer-copy">&copy; 2026 Puzzle Stats</p>
+      <p class="footer-copy">© 2026 Puzzle Stats</p>
       <ul class="footer-links">
         <li><a href="privacy.html">Privacy</a></li>
         <li><a href="support.html">Support</a></li>
-        <li><a href="mailto:support@puzzlestats.app">support@puzzlestats.app</a></li>
+        <li><a href="mailto:support@puzzlestats.app">Email</a></li>
       </ul>
     </div>
   </footer>
 
   <script>
-    const toggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('.nav-links');
-    toggle?.addEventListener('click', () => {
+    document.querySelector('.nav-toggle')?.addEventListener('click', function () {
+      const nav = document.querySelector('.nav-links');
       const open = nav.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open);
+      this.setAttribute('aria-expanded', open);
     });
   </script>
 </body>
