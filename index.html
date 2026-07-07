@@ -3,29 +3,106 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Puzzle Stats — Track Your Puzzle Solves</title>
-  <meta name="description" content="Puzzle Stats is the speed puzzler's companion. Catalog puzzles, time your solves, record milestones, and analyze your performance — all offline.">
+  <title>Puzzle Stats — Jigsaw Puzzle Timer &amp; Solve Tracker for iOS</title>
+  <meta name="description" content="Puzzle Stats is a free iOS app for speed puzzlers. Catalog your jigsaw collection, time solves, record milestones, track flip time, and analyze stats — offline, no account required.">
+  <meta name="keywords" content="puzzle timer, jigsaw puzzle tracker, puzzle stats, speed puzzling, puzzle solve tracker, jigsaw catalog, puzzle app iOS">
+  <meta name="author" content="Puzzle Stats">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
+  <meta name="application-name" content="Puzzle Stats">
+  <meta name="apple-mobile-web-app-title" content="Puzzle Stats">
   <meta name="theme-color" content="#0f1117">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/favicon.svg">
   <link rel="canonical" href="https://puzzlestats.app/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://puzzlestats.app/">
-  <meta property="og:title" content="Puzzle Stats — Track Your Puzzle Solves">
-  <meta property="og:description" content="Catalog puzzles, time your solves, record milestones, and analyze your performance. Built for speed puzzlers.">
+  <meta property="og:title" content="Puzzle Stats — Jigsaw Puzzle Timer &amp; Solve Tracker">
+  <meta property="og:description" content="Catalog puzzles, time your solves, record milestones, and analyze your performance. Built for speed puzzlers. Free on iOS.">
   <meta property="og:site_name" content="Puzzle Stats">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Puzzle Stats — Track Your Puzzle Solves">
-  <meta name="twitter:description" content="Catalog puzzles, time your solves, record milestones, and analyze your performance.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://puzzlestats.app/assets/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Puzzle Stats — Track your puzzle solves">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Puzzle Stats — Jigsaw Puzzle Timer &amp; Solve Tracker">
+  <meta name="twitter:description" content="Catalog puzzles, time your solves, record milestones, and analyze your performance. Free on iOS.">
+  <meta name="twitter:image" content="https://puzzlestats.app/assets/og-image.svg">
+  <meta name="twitter:image:alt" content="Puzzle Stats — Track your puzzle solves">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://puzzlestats.app/#website",
+        "url": "https://puzzlestats.app/",
+        "name": "Puzzle Stats",
+        "description": "Jigsaw puzzle timer and solve tracker for speed puzzlers.",
+        "publisher": { "@id": "https://puzzlestats.app/#organization" },
+        "inLanguage": "en-US"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://puzzlestats.app/#organization",
+        "name": "Puzzle Stats",
+        "url": "https://puzzlestats.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://puzzlestats.app/assets/favicon.svg"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "support@puzzlestats.app",
+          "contactType": "customer support",
+          "availableLanguage": "English"
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://puzzlestats.app/#app",
+        "name": "Puzzle Stats",
+        "url": "https://puzzlestats.app/",
+        "operatingSystem": "iOS",
+        "applicationCategory": "LifestyleApplication",
+        "description": "Catalog jigsaw puzzles, time solves, record milestones, track flip time, rate difficulty and fun, and analyze personal performance. Works offline with no account required.",
+        "featureList": "Puzzle catalog, stopwatch timer, milestone markers, flip time tracking, solve statistics, barcode scanning, optional iCloud sync, optional video recording",
+        "offers": [
+          {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "description": "Free with core features"
+          },
+          {
+            "@type": "Offer",
+            "price": "0.99",
+            "priceCurrency": "USD",
+            "description": "Premium monthly subscription"
+          },
+          {
+            "@type": "Offer",
+            "price": "9.99",
+            "priceCurrency": "USD",
+            "description": "Premium annual subscription"
+          }
+        ],
+        "author": { "@id": "https://puzzlestats.app/#organization" }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <header class="site-header">
     <div class="container">
-      <a href="index.html" class="logo">
-        <img src="assets/favicon.svg" alt="" class="logo-icon" width="32" height="32">
+      <a href="/" class="logo" aria-label="Puzzle Stats home">
+        <img src="/assets/favicon.svg" alt="Puzzle Stats logo" class="logo-icon" width="32" height="32">
         Puzzle Stats
       </a>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -48,7 +125,7 @@
     <section class="hero">
       <div class="container hero-content">
         <span class="hero-badge">Now on iOS</span>
-        <h1>Your puzzle journey,<br><span>timed to perfection</span></h1>
+        <h1>Your jigsaw puzzle journey,<br><span>timed to perfection</span></h1>
         <p class="hero-subtitle">
           Catalog your collection, time every solve, capture milestones with a tap, and watch your stats improve — all without an account or internet connection.
         </p>
@@ -186,8 +263,8 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <a href="index.html" class="logo">
-        <img src="assets/favicon.svg" alt="" class="logo-icon" width="28" height="28">
+      <a href="/" class="logo" aria-label="Puzzle Stats home">
+        <img src="/assets/favicon.svg" alt="Puzzle Stats logo" class="logo-icon" width="28" height="28">
         Puzzle Stats
       </a>
       <ul class="footer-links">

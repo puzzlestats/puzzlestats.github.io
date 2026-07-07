@@ -47,6 +47,32 @@ GitHub Pages will serve the site over HTTPS automatically once DNS propagates.
 - [ ] Verify privacy policy matches actual app behavior and App Privacy nutrition labels in App Store Connect
 - [ ] Add in-app privacy policy link in the iOS app Settings screen
 
+## SEO & Google Search
+
+The site includes:
+
+- **Meta tags** — titles, descriptions, robots, Open Graph, and Twitter cards on every page
+- **JSON-LD structured data** — `WebSite`, `Organization`, and `SoftwareApplication` on the homepage; `FAQPage` on support (eligible for rich results); breadcrumbs on subpages
+- **Sitemap** — `sitemap.xml` referenced in `robots.txt`
+- **OG image** — `assets/og-image.svg` for social sharing previews
+
+### Google Search Console setup
+
+1. Deploy the site to `https://puzzlestats.app`
+2. Go to [Google Search Console](https://search.google.com/search-console)
+3. Add property for `https://puzzlestats.app`
+4. Verify ownership via DNS TXT record (recommended) or HTML file upload
+5. Submit sitemap: `https://puzzlestats.app/sitemap.xml`
+6. Use **URL Inspection** to request indexing of the homepage
+
+Optional: add a Google site verification meta tag to each page's `<head>`:
+
+```html
+<meta name="google-site-verification" content="YOUR_VERIFICATION_CODE">
+```
+
+For best social preview compatibility, consider exporting `assets/og-image.svg` to a 1200×630 PNG and updating `og:image` URLs.
+
 ## Structure
 
 ```
