@@ -155,9 +155,26 @@
             <p>Box shots and finished puzzle pics. Optional timelapse recording.</p>
           </article>
           <article class="feature-item">
+            <h3>Challenge links</h3>
+            <p>Share a timed solve — puzzle, time, and mode in the URL. Friends open it on the web or in the app and race your clock.</p>
+          </article>
+          <article class="feature-item">
             <h3>Quick timer</h3>
             <p>Start timing before you've picked a puzzle. Assign it to your collection later.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="challenges">
+      <div class="container">
+        <div class="challenge-card challenge-card--preview">
+          <p class="challenge-eyebrow">Example challenge link</p>
+          <h2 class="challenge-title">Starry Night</h2>
+          <p class="challenge-sub">Ravensburger · 1,000 pieces</p>
+          <p class="challenge-time">1:02:03.4</p>
+          <p class="challenge-copy">Pete solved Ravensburger 1,000-piece Starry Night in 1:02:03.4 (solo). Can you beat it?</p>
+          <p class="challenge-note" style="margin-top:0">Shared from the app after a speed-timed solve · opens at <code>puzzlestats.app/challenge</code></p>
         </div>
       </div>
     </section>
@@ -231,11 +248,15 @@
     <p class="footer-bottom">© 2026 Puzzle Stats</p>
   </footer>
 
+  <script src="/js/site-config.js"></script>
   <script>
     document.querySelector('.nav-toggle')?.addEventListener('click', function () {
       const nav = document.querySelector('.nav-links');
       const open = nav.classList.toggle('open');
       this.setAttribute('aria-expanded', open);
+    });
+    document.querySelectorAll('a.app-store-btn[href="#"]').forEach(function (el) {
+      if (window.PUZZLESTATS?.appStoreURL) el.href = window.PUZZLESTATS.appStoreURL;
     });
   </script>
 </body>
