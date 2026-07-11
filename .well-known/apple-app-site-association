@@ -3,7 +3,7 @@
     "apps": [],
     "details": [
       {
-        "appID": "REPLACE_WITH_TEAM_ID.app.puzzlestats.puzzlestats",
+        "appID": "QNLTJP653X.app.puzzlestats.puzzlestats",
         "paths": [
           "/challenge",
           "/challenge/*",
