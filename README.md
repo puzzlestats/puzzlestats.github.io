@@ -47,7 +47,7 @@ If you see "There isn't a GitHub Pages site here", Pages is not enabled yet — 
 ## Before Launch
 
 - [ ] Update App Store badge links in `index.html` with your real App Store URL
-- [ ] Confirm `support@puzzlestats.app` email is set up and monitored
+- [ ] Confirm `puzzlestatsapp@gmail.com` email is set up and monitored
 - [ ] Verify privacy policy matches actual app behavior and App Privacy nutrition labels in App Store Connect
 - [ ] Add in-app privacy policy link in the iOS app Settings screen
 
