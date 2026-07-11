@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challenge — Puzzle Stats</title>
+  <meta name="description" content="Accept a jigsaw speed puzzle challenge from a friend.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#f6f3ee">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://puzzlestats.app/challenge">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Puzzle Stats">
+  <meta property="og:image" content="https://puzzlestats.app/assets/og-image.svg">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container container--wide">
+      <a href="/" class="logo" aria-label="Puzzle Stats home">
+        <img src="/assets/favicon.svg" alt="" class="logo-icon" width="28" height="28">
+        Puzzle Stats
+      </a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/support.html">Support</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="challenge-page">
+    <div class="container" id="challenge-root">
+      <p class="challenge-loading">Loading challenge…</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="logo">
+          <img src="/assets/favicon.svg" alt="" class="logo-icon" width="28" height="28">
+          Puzzle Stats
+        </a>
+        <p>Jigsaw puzzle timer for speed puzzlers.</p>
+      </div>
+      <div class="footer-col">
+        <h4>App</h4>
+        <ul>
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/support.html">Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="/privacy.html">Privacy</a></li>
+          <li><a href="/terms.html">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-bottom">© 2026 Puzzle Stats</p>
+  </footer>
+
+  <script src="/js/challenge.js"></script>
+  <script>
+    document.querySelector('.nav-toggle')?.addEventListener('click', function () {
+      const nav = document.querySelector('.nav-links');
+      const open = nav.classList.toggle('open');
+      this.setAttribute('aria-expanded', open);
+    });
+    ChallengeShare.bootstrap({});
+  </script>
+</body>
+</html>

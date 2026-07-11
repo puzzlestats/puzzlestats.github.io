@@ -3,14 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page not found — Puzzle Stats</title>
+  <title>Challenge — Puzzle Stats</title>
   <meta name="robots" content="noindex">
   <meta name="theme-color" content="#f6f3ee">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script>
+    (function () {
+      var path = window.location.pathname;
+      if (/^\/c\/v1\//.test(path)) {
+        document.documentElement.classList.add('is-challenge-route');
+      }
+    })();
+  </script>
 </head>
 <body>
-  <header class="site-header">
+  <header class="site-header" id="challenge-header" hidden>
     <div class="container container--wide">
       <a href="/" class="logo">
         <img src="/assets/favicon.svg" alt="" class="logo-icon" width="28" height="28">
@@ -19,12 +27,30 @@
     </div>
   </header>
 
-  <main class="error-page">
+  <main class="challenge-page" id="challenge-main" hidden>
+    <div class="container" id="challenge-root"></div>
+  </main>
+
+  <main class="error-page" id="error-main">
     <div class="container">
       <h1>404</h1>
       <p>That page doesn&rsquo;t exist. Maybe the pieces don&rsquo;t fit.</p>
       <a href="/" class="app-store-btn">Back home</a>
     </div>
   </main>
+
+  <script src="/js/challenge.js"></script>
+  <script>
+    (function () {
+      var isCompact = /^\/c\/v1\//.test(window.location.pathname);
+      if (!isCompact) return;
+
+      document.getElementById('error-main').hidden = true;
+      document.getElementById('challenge-header').hidden = false;
+      document.getElementById('challenge-main').hidden = false;
+
+      ChallengeShare.bootstrap({});
+    })();
+  </script>
 </body>
 </html>

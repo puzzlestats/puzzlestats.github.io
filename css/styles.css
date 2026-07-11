@@ -474,6 +474,124 @@ a:hover { color: var(--red); }
   margin: 0 0 1.5rem;
 }
 
+/* challenge share */
+.challenge-page {
+  padding: 2.5rem 0 4rem;
+  min-height: 50vh;
+}
+
+.challenge-loading {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+.challenge-card {
+  background: var(--surface);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: 5px 5px 0 var(--ink);
+  padding: 2rem 1.75rem;
+  max-width: 28rem;
+  margin: 0 auto;
+}
+
+.challenge-card--error {
+  border-color: var(--line);
+  box-shadow: none;
+}
+
+.challenge-eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 0 0 0.75rem;
+}
+
+.challenge-title {
+  font-size: clamp(1.5rem, 4vw, 1.875rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.35rem;
+}
+
+.challenge-sub {
+  font-size: 0.9375rem;
+  color: var(--muted);
+  margin: 0 0 1.5rem;
+}
+
+.challenge-time {
+  font-family: var(--mono);
+  font-size: clamp(2.5rem, 10vw, 3.25rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin: 0 0 1.5rem;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.challenge-meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.35rem 1rem;
+  margin: 0 0 1.5rem;
+  font-size: 0.875rem;
+}
+
+.challenge-meta dt {
+  font-weight: 600;
+  color: var(--muted);
+  margin: 0;
+}
+
+.challenge-meta dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+.challenge-copy {
+  font-size: 0.9375rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0 0 1.5rem;
+}
+
+.challenge-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.challenge-open {
+  text-align: center;
+  justify-content: center;
+}
+
+.app-store-btn--secondary {
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  text-align: center;
+}
+
+.app-store-btn--secondary:hover {
+  background: var(--bg);
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.challenge-note {
+  margin: 1rem 0 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.45;
+}
+
 /* footer */
 .site-footer {
   background: var(--surface);
