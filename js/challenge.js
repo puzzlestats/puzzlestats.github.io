@@ -236,7 +236,7 @@
         </dl>
         <p class="challenge-copy">${escapeHtml(summaryLine(payload))}</p>
         <div class="challenge-actions">
-          <a href="${escapeAttr(global.location.href)}" class="app-store-btn challenge-open">Open in Puzzle Stats</a>
+          <a href="${escapeAttr(toAppDeepLink(global.location.href))}" class="app-store-btn challenge-open" id="challenge-open-app">Open in Puzzle Stats</a>
           <a href="#" class="app-store-btn app-store-btn--secondary" id="challenge-app-store">Get the app</a>
         </div>
         <p class="challenge-note">Opens this challenge in Puzzle Stats on iOS. No account required.</p>
@@ -244,8 +244,42 @@
     `;
 
     const storeBtn = root.querySelector('#challenge-app-store');
+    const storeURL = global.CHALLENGE_APP_STORE_URL || '#';
     if (storeBtn) {
-      storeBtn.href = global.CHALLENGE_APP_STORE_URL || '#';
+      storeBtn.href = storeURL;
+    }
+
+    const openBtn = root.querySelector('#challenge-open-app');
+    if (openBtn) {
+      openBtn.addEventListener('click', function (event) {
+        // Safari does not open Universal Links for same-domain taps.
+        // Use the custom scheme, then fall back to the App Store if the app is not installed.
+        event.preventDefault();
+        const deepLink = toAppDeepLink(global.location.href);
+        const started = Date.now();
+        global.location.href = deepLink;
+
+        const placeholderStore = !storeURL || storeURL === '#' || /id0{5,}/.test(storeURL);
+        if (placeholderStore) return;
+
+        setTimeout(function () {
+          if (document.hidden || document.webkitHidden) return;
+          if (Date.now() - started < 2500) {
+            global.location.href = storeURL;
+          }
+        }, 1600);
+      });
+    }
+  }
+
+  /** Convert https://puzzlestats.app/... → puzzlestats://puzzlestats.app/... */
+  function toAppDeepLink(href) {
+    try {
+      const url = new URL(href);
+      url.protocol = 'puzzlestats:';
+      return url.toString();
+    } catch {
+      return href;
     }
   }
 
