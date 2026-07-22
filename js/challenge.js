@@ -237,16 +237,29 @@
         <p class="challenge-copy">${escapeHtml(summaryLine(payload))}</p>
         <div class="challenge-actions">
           <a href="${escapeAttr(toAppDeepLink(global.location.href))}" class="app-store-btn challenge-open" id="challenge-open-app">Open in Puzzle Stats</a>
-          <a href="#" class="app-store-btn app-store-btn--secondary" id="challenge-app-store">Get the app</a>
+          <span class="app-store-btn app-store-btn--soon" id="challenge-app-store" hidden>App Store · Coming soon</span>
+          <a href="#" class="app-store-btn app-store-btn--secondary" id="challenge-app-store-link" hidden>Get the app</a>
         </div>
-        <p class="challenge-note">Opens this challenge in Puzzle Stats on iOS. No account required.</p>
+        <p class="challenge-note" id="challenge-note">Opens this challenge in Puzzle Stats. No account required. App Store listing coming soon.</p>
       </div>
     `;
 
-    const storeBtn = root.querySelector('#challenge-app-store');
-    const storeURL = global.CHALLENGE_APP_STORE_URL || '#';
-    if (storeBtn) {
-      storeBtn.href = storeURL;
+    const storeURL = global.CHALLENGE_APP_STORE_URL || global.PUZZLESTATS?.appStoreURL || null;
+    const placeholderStore = !storeURL || storeURL === '#' || /id0{5,}/.test(String(storeURL));
+    const soonBadge = root.querySelector('#challenge-app-store');
+    const storeLink = root.querySelector('#challenge-app-store-link');
+    const note = root.querySelector('#challenge-note');
+
+    if (placeholderStore) {
+      if (soonBadge) soonBadge.hidden = false;
+    } else if (storeLink) {
+      storeLink.hidden = false;
+      storeLink.href = storeURL;
+      storeLink.target = '_blank';
+      storeLink.rel = 'noopener noreferrer';
+      if (note) {
+        note.textContent = 'Opens this challenge in Puzzle Stats. No account required. Get the app on the App Store if you need it.';
+      }
     }
 
     const openBtn = root.querySelector('#challenge-open-app');
@@ -259,7 +272,6 @@
         const started = Date.now();
         global.location.href = deepLink;
 
-        const placeholderStore = !storeURL || storeURL === '#' || /id0{5,}/.test(storeURL);
         if (placeholderStore) return;
 
         setTimeout(function () {
