@@ -694,6 +694,66 @@ a.store-badge:hover {
   margin: 0 0 1.5rem;
 }
 
+/* download redirect / soft landing */
+.download-page {
+  padding: 2.5rem 0 4rem;
+  min-height: 50vh;
+}
+
+.download-status {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  margin: 3rem 0;
+}
+
+.download-card {
+  background: var(--surface);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: 5px 5px 0 var(--ink);
+  padding: 2rem 1.75rem;
+  max-width: 28rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.download-eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 0 0 0.75rem;
+}
+
+.download-title {
+  font-size: clamp(1.5rem, 4vw, 1.875rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.5rem;
+}
+
+.download-sub {
+  font-size: 0.9375rem;
+  color: var(--muted);
+  margin: 0 0 1.5rem;
+  line-height: 1.55;
+}
+
+.download-source {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin: -0.75rem 0 1.25rem;
+  letter-spacing: 0.02em;
+}
+
+.download-home {
+  margin: 1.5rem 0 0;
+  font-size: 0.875rem;
+}
+
 /* challenge share */
 .challenge-page {
   padding: 2.5rem 0 4rem;
