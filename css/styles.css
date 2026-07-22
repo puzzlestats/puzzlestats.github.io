@@ -1,6 +1,6 @@
 :root {
   --bg: #f6f3ee;
-  --surface: #fff;
+  --surface: #fffdf9;
   --ink: #1c1917;
   --muted: #6b6560;
   --line: #e5e0d8;
@@ -8,7 +8,8 @@
   --yellow: #e8a820;
   --blue: #2b6cb8;
   --green: #2f8554;
-  --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --font: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --mono: ui-monospace, "Cascadia Code", "SF Mono", monospace;
   --narrow: 40rem;
   --wide: 54rem;
@@ -25,7 +26,17 @@ body {
   font-size: 1.0625rem;
   line-height: 1.65;
   color: var(--ink);
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 90% 55% at 100% -10%, rgba(232, 168, 32, 0.11), transparent 55%),
+    radial-gradient(ellipse 70% 45% at -5% 30%, rgba(217, 68, 50, 0.05), transparent 50%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(28, 25, 23, 0.015) 2px,
+      rgba(28, 25, 23, 0.015) 3px
+    );
   -webkit-font-smoothing: antialiased;
 }
 
@@ -58,7 +69,8 @@ a:hover { color: var(--red); }
 
 /* header */
 .site-header {
-  background: var(--surface);
+  background: rgba(255, 253, 249, 0.94);
+  backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
   position: sticky;
   top: 0;
@@ -121,17 +133,13 @@ a:hover { color: var(--red); }
 
 /* hero */
 .hero {
-  padding: 2.25rem 0 2.75rem;
+  padding: 2.75rem 0 3rem;
   position: relative;
   overflow: hidden;
-  background:
-    radial-gradient(ellipse 80% 60% at 100% 0%, rgba(232, 168, 32, 0.12), transparent 55%),
-    radial-gradient(ellipse 70% 50% at 0% 100%, rgba(217, 68, 50, 0.06), transparent 50%),
-    var(--bg);
 }
 
 @media (min-width: 720px) {
-  .hero { padding: 3.5rem 0 4rem; }
+  .hero { padding: 3.75rem 0 4.25rem; }
 }
 
 .hero-grid {
@@ -148,9 +156,10 @@ a:hover { color: var(--red); }
 }
 
 .hero-brand {
-  font-size: clamp(1.85rem, 7vw, 2.5rem);
-  font-weight: 800;
-  letter-spacing: -0.04em;
+  font-family: var(--display);
+  font-size: clamp(2.15rem, 8vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
   line-height: 1.05;
   margin: 0 0 0.55rem;
   color: var(--ink);
@@ -175,7 +184,7 @@ a:hover { color: var(--red); }
 
 .hero-features-link {
   display: inline-block;
-  margin-top: 1rem;
+  margin-top: 1.1rem;
 }
 
 .store-badges {
@@ -315,11 +324,10 @@ a.store-badge:hover {
 
 .text-link:hover { color: var(--ink); text-decoration: underline; }
 
-/* decorative phone mock */
+/* decorative phone mock — desktop only so mobile hero stays brand-first */
 .hero-visual {
-  display: block;
-  width: min(100%, 200px);
-  margin-inline: auto;
+  display: none;
+  width: 200px;
   background: var(--surface);
   border: 2px solid var(--ink);
   border-radius: 24px;
@@ -328,24 +336,7 @@ a.store-badge:hover {
 }
 
 @media (min-width: 720px) {
-  .hero-visual {
-    margin-inline: 0;
-    width: 200px;
-  }
-}
-
-@media (max-width: 719px) {
-  .hero-visual {
-    width: min(100%, 168px);
-    padding: 0.85rem;
-    border-radius: 20px;
-    box-shadow: 4px 4px 0 var(--ink);
-  }
-
-  .hero-visual .mock-timer {
-    font-size: 1.625rem;
-    padding: 1rem 0;
-  }
+  .hero-visual { display: block; }
 }
 
 .mock-timer {
@@ -391,8 +382,9 @@ a.store-badge:hover {
 }
 
 .section-head h2 {
-  font-size: 1.375rem;
-  font-weight: 800;
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 700;
   margin: 0 0 0.35rem;
   letter-spacing: -0.025em;
 }
@@ -485,32 +477,31 @@ a.store-badge:hover {
   color: var(--muted);
 }
 
-/* mid-page app promo */
+/* mid-page app promo — kraft paper, not solid black */
 .promo-band {
   padding: 2.75rem 0;
   text-align: center;
-  background: var(--ink);
-  color: #fff;
+  background:
+    linear-gradient(180deg, rgba(232, 168, 32, 0.08), transparent 60%),
+    var(--surface);
+  border-block: 1px solid var(--line);
+  color: var(--ink);
 }
 
 .promo-band h2 {
-  font-size: clamp(1.25rem, 4vw, 1.5rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  font-family: var(--display);
+  font-size: clamp(1.35rem, 4vw, 1.65rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
   margin: 0 0 0.5rem;
 }
 
 .promo-band p {
   margin: 0 0 1.35rem;
   font-size: 0.9375rem;
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--muted);
   max-width: 36ch;
   margin-inline: auto;
-}
-
-.promo-band .store-badge--soon {
-  background: var(--surface);
-  color: var(--ink);
 }
 
 /* cta */
@@ -520,13 +511,14 @@ a.store-badge:hover {
 }
 
 .cta-band p {
-  font-size: 1.25rem;
+  font-family: var(--display);
+  font-size: 1.35rem;
   font-weight: 700;
   margin: 0 0 1.25rem;
   letter-spacing: -0.02em;
 }
 
-/* sticky mobile store bar */
+/* sticky mobile store bar — single App Store CTA */
 .mobile-store-bar {
   display: none;
 }
@@ -542,10 +534,11 @@ a.store-badge:hover {
     right: 0;
     bottom: 0;
     z-index: 40;
-    padding: 0.65rem 1rem calc(0.65rem + env(safe-area-inset-bottom, 0px));
-    background: var(--surface);
+    padding: 0.7rem 1rem calc(0.7rem + env(safe-area-inset-bottom, 0px));
+    background: rgba(255, 253, 249, 0.96);
+    backdrop-filter: blur(8px);
     border-top: 1px solid var(--line);
-    box-shadow: 0 -4px 16px rgba(28, 25, 23, 0.06);
+    box-shadow: 0 -6px 20px rgba(28, 25, 23, 0.07);
   }
 
   .mobile-store-bar-label {
@@ -559,34 +552,17 @@ a.store-badge:hover {
     min-width: 0;
   }
 
-  .store-badges--compact {
+  .mobile-store-bar .store-badge--compact {
     flex-shrink: 0;
-    gap: 0.4rem;
+    box-shadow: 2px 2px 0 rgba(28, 25, 23, 0.18);
+  }
+
+  body {
+    padding-bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px));
   }
 
   .site-footer {
-    padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px));
-  }
-}
-
-@media (max-width: 400px) {
-  .mobile-store-bar {
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
-  }
-
-  .mobile-store-bar-label {
-    flex: 1 1 100%;
-  }
-
-  .store-badges--compact {
-    justify-content: center;
-    width: 100%;
-  }
-
-  .site-footer {
-    padding-bottom: calc(6.5rem + env(safe-area-inset-bottom, 0px));
+    padding-bottom: 2rem;
   }
 }
 
@@ -991,7 +967,7 @@ a.store-badge:hover {
   }
 }
 
-/* light motion — hero only */
+/* light motion — hero + CTAs */
 @media (prefers-reduced-motion: no-preference) {
   .hero-copy {
     animation: hero-rise 0.55s ease-out both;
@@ -1001,15 +977,9 @@ a.store-badge:hover {
     animation: hero-rise 0.65s ease-out 0.12s both;
   }
 
-  .promo-band .store-badge,
-  .cta-band .store-badge {
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-  }
-
-  .promo-band .store-badge--soon:hover,
-  .cta-band .store-badge--soon:hover {
+  a.store-badge:hover {
     transform: translate(-1px, -1px);
-    box-shadow: 4px 4px 0 var(--ink);
+    box-shadow: 4px 4px 0 rgba(28, 25, 23, 0.25);
   }
 }
 

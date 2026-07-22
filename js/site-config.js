@@ -17,7 +17,7 @@ window.CHALLENGE_APP_STORE_URL = window.PUZZLESTATS.appStoreURL;
 /**
  * Wire store CTAs: turn Coming soon placeholders into live links when URLs are set.
  * Targets [data-store="app"] and [data-store="play"].
- * Only stores with a non-null URL are upgraded; the other stays “Coming soon”.
+ * Already-live <a> tags are synced to the configured URL; placeholders are upgraded.
  */
 window.PUZZLESTATS.hydrateStoreBadges = function (root) {
   const cfg = window.PUZZLESTATS;
@@ -30,6 +30,17 @@ window.PUZZLESTATS.hydrateStoreBadges = function (root) {
     if (!url) return;
 
     scope.querySelectorAll('[data-store="' + key + '"]').forEach(function (el) {
+      if (el.tagName === 'A') {
+        el.href = url;
+        el.target = '_blank';
+        el.rel = 'noopener noreferrer';
+        el.className = el.className.replace(/\bstore-badge--soon\b/g, '').trim();
+        el.removeAttribute('aria-disabled');
+        const label = el.querySelector('.store-badge-label');
+        if (label) label.textContent = liveLabel[key];
+        return;
+      }
+
       const link = document.createElement('a');
       link.href = url;
       link.className = el.className.replace(/\bstore-badge--soon\b/g, '').trim();
