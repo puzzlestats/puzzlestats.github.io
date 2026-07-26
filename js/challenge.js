@@ -244,7 +244,8 @@
     `;
 
     const storeBtn = root.querySelector('#challenge-app-store');
-    const storeURL = global.CHALLENGE_APP_STORE_URL || '#';
+    const downloadBase = (global.PUZZLESTATS && global.PUZZLESTATS.downloadURL) || '/download';
+    const storeURL = downloadBase + (downloadBase.indexOf('?') >= 0 ? '&' : '?') + 'source=challenge';
     if (storeBtn) {
       storeBtn.href = storeURL;
     }
@@ -253,14 +254,13 @@
     if (openBtn) {
       openBtn.addEventListener('click', function (event) {
         // Safari does not open Universal Links for same-domain taps.
-        // Use the custom scheme, then fall back to the App Store if the app is not installed.
+        // Use the custom scheme, then fall back to /download if the app is not installed.
         event.preventDefault();
         const deepLink = toAppDeepLink(global.location.href);
         const started = Date.now();
         global.location.href = deepLink;
 
-        const placeholderStore = !storeURL || storeURL === '#' || /id0{5,}/.test(storeURL);
-        if (placeholderStore) return;
+        if (!storeURL || storeURL === '#') return;
 
         setTimeout(function () {
           if (document.hidden || document.webkitHidden) return;

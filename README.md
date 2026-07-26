@@ -7,8 +7,27 @@ Marketing and legal pages for the [Puzzle Stats](https://puzzlestats.app) iOS ap
 | Page | URL | Purpose |
 |------|-----|---------|
 | Landing | `/` | App marketing, features, pricing |
+| Download | `/download` | iOS & Android store links; supports `?source=` attribution |
 | Privacy Policy | `/privacy.html` | Required for App Store Connect |
 | Support | `/support.html` | Required for App Store Connect |
+| Terms | `/terms.html` | Terms of service |
+
+### Download attribution
+
+Share campaign links as:
+
+```
+https://puzzlestats.app/download?source=instagram
+```
+
+`source` must be alphanumeric (plus `.`, `_`, `-`). It is:
+
+- Shown lightly on the page (“Via instagram”)
+- Passed to the App Store as `ct=` (Apple campaign token)
+- Passed to Google Play as a `referrer` utm when Android is live
+- Pushed to `window.dataLayer` for optional analytics
+
+Update store URLs in `js/site-config.js`. Set `playStoreAvailable: true` and `playStoreURL` when Android ships.
 
 ## App Store Connect URLs
 
