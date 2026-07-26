@@ -42,6 +42,32 @@ window.PUZZLESTATS.withPlayCampaign = function (url, source) {
   }
 };
 
+/**
+ * Hand off to the native app. Universal Links already cover taps from other
+ * apps; this covers landing in Safari, where same-domain links stay on the web.
+ * Attempted once per URL per session so returning to the page does not loop.
+ */
+window.PUZZLESTATS.autoOpenApp = function (deepLink) {
+  if (!deepLink) return false;
+
+  const ua = navigator.userAgent || '';
+  const isMobile =
+    /iPhone|iPad|iPod|Android/i.test(ua) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  if (!isMobile) return false;
+
+  const key = 'ps_opened_' + window.location.pathname + window.location.search;
+  try {
+    if (sessionStorage.getItem(key)) return false;
+    sessionStorage.setItem(key, '1');
+  } catch (e) {
+    // Private mode — fall through and attempt anyway.
+  }
+
+  window.location.href = deepLink;
+  return true;
+};
+
 /** Analytics sink — stays a no-op queue until a tag manager is installed. */
 window.PUZZLESTATS.track = function (event, payload) {
   window.dataLayer = window.dataLayer || [];

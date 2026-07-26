@@ -238,32 +238,22 @@
         <p class="challenge-copy">Open in Puzzle Stats to save it as a friend&rsquo;s solve or as a team effort you were part of.</p>
         <div class="challenge-actions">
           <a href="${escapeAttr(toAppDeepLink(global.location.href))}" class="app-store-btn challenge-open" id="share-open-app">Open in Puzzle Stats</a>
-          <span class="app-store-btn app-store-btn--soon" id="share-app-store" hidden>App Store · Coming soon</span>
-          <a href="#" class="app-store-btn app-store-btn--secondary" id="share-app-store-link" hidden>Get the app</a>
+          <a href="/download?source=share" class="app-store-btn app-store-btn--secondary" id="share-app-store-link">Get the app</a>
         </div>
-        <p class="challenge-note" id="share-note">Opens this shared time in Puzzle Stats. No account required. App Store listing coming soon.</p>
+        <p class="challenge-note" id="share-note">Opens this shared time in Puzzle Stats. No account required.</p>
       </div>
     `;
 
     const baseStoreURL = global.CHALLENGE_APP_STORE_URL || global.PUZZLESTATS?.appStoreURL || null;
-    const placeholderStore = !baseStoreURL || baseStoreURL === '#' || /id0{5,}/.test(String(baseStoreURL));
-    const storeURL = placeholderStore
-      ? baseStoreURL
-      : global.PUZZLESTATS?.withAppStoreCampaign?.(baseStoreURL, 'share') || baseStoreURL;
-    const soonBadge = root.querySelector('#share-app-store');
+    const storeURL = baseStoreURL
+      ? global.PUZZLESTATS?.withAppStoreCampaign?.(baseStoreURL, 'share') || baseStoreURL
+      : null;
     const storeLink = root.querySelector('#share-app-store-link');
-    const note = root.querySelector('#share-note');
 
-    if (placeholderStore) {
-      if (soonBadge) soonBadge.hidden = false;
-    } else if (storeLink) {
-      storeLink.hidden = false;
+    if (storeURL && storeLink) {
       storeLink.href = storeURL;
       storeLink.target = '_blank';
       storeLink.rel = 'noopener noreferrer';
-      if (note) {
-        note.textContent = 'Opens this shared time in Puzzle Stats. No account required. Get the app on the App Store if you need it.';
-      }
     }
 
     const openBtn = root.querySelector('#share-open-app');
@@ -276,7 +266,7 @@
         const started = Date.now();
         global.location.href = deepLink;
 
-        if (placeholderStore) return;
+        if (!storeURL) return;
 
         setTimeout(function () {
           if (document.hidden || document.webkitHidden) return;
@@ -286,14 +276,20 @@
         }, 1600);
       });
     }
+
+    // Safari keeps same-domain Universal Links on the web, so hand off explicitly.
+    global.PUZZLESTATS?.autoOpenApp?.(toAppDeepLink(global.location.href));
   }
 
-  /** Convert https://puzzlestats.app/... → puzzlestats://puzzlestats.app/... */
+  /**
+   * Convert https://puzzlestats.app/... → puzzlestats://puzzlestats.app/...
+   * Built by hand: assigning `protocol` is a no-op when swapping a special
+   * scheme (https) for a custom one.
+   */
   function toAppDeepLink(href) {
     try {
       const url = new URL(href);
-      url.protocol = 'puzzlestats:';
-      return url.toString();
+      return 'puzzlestats://' + url.host + url.pathname + url.search + url.hash;
     } catch {
       return href;
     }
