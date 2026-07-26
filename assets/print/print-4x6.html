@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Puzzle Stats — Print 4×6 Rollo Label</title>
+  <style>
+    @page {
+      size: 4in 6in;
+      margin: 0;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 4in;
+      height: 6in;
+    }
+
+    img.label {
+      width: 4in;
+      height: 6in;
+      display: block;
+      object-fit: fill;
+    }
+
+    /* Screen: thin outline so the label bounds are visible */
+    @media screen {
+      body {
+        background: #e8e8e8;
+        min-height: 100vh;
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem 1rem 2rem;
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+      }
+
+      .instructions {
+        max-width: 28rem;
+        margin: 0 0 1.25rem;
+        padding: 0.85rem 1rem;
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        line-height: 1.45;
+        color: #222;
+      }
+
+      .instructions h1 {
+        margin: 0 0 0.5rem;
+        font-size: 1.05rem;
+        font-weight: 650;
+      }
+
+      .instructions ol {
+        margin: 0.4rem 0 0.75rem;
+        padding-left: 1.25rem;
+      }
+
+      .instructions li {
+        margin: 0.25rem 0;
+      }
+
+      .instructions .hint {
+        margin: 0;
+        font-size: 0.8rem;
+        color: #555;
+      }
+
+      .print-btn {
+        display: inline-block;
+        margin-top: 0.65rem;
+        padding: 0.45rem 1.1rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #fff;
+        background: #1a1a1a;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .print-btn:hover {
+        background: #333;
+      }
+
+      .page {
+        width: 4in;
+        height: 6in;
+        box-shadow: 0 0 0 1px #999;
+        background: #fff;
+        flex-shrink: 0;
+      }
+    }
+
+    @media print {
+      .instructions {
+        display: none !important;
+      }
+
+      .page {
+        box-shadow: none;
+        outline: none;
+      }
+
+      html, body {
+        width: 4in;
+        height: 6in;
+        background: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="instructions">
+    <h1>Print Puzzle Stats 4×6 label</h1>
+    <ol>
+      <li>Open this file in Chrome or Edge.</li>
+      <li>Press <kbd>Ctrl</kbd>+<kbd>P</kbd> (or click Print below).</li>
+      <li>Printer: choose your <strong>Rollo</strong>.</li>
+      <li>Paper size: <strong>4×6</strong> if listed (or custom 4 in × 6 in).</li>
+      <li>Margins: <strong>None</strong>.</li>
+      <li>Scale: <strong>100%</strong> (no “fit to page”).</li>
+      <li>Turn off headers and footers.</li>
+    </ol>
+    <p class="hint">Uses <code>puzzlestats-rollo-4x6-300dpi.png</code> next to this file.</p>
+    <button type="button" class="print-btn" onclick="window.print()">Print</button>
+  </div>
+
+  <div class="page">
+    <img
+      class="label"
+      src="puzzlestats-rollo-4x6-300dpi.png"
+      width="1200"
+      height="1800"
+      alt="Puzzle Stats Rollo 4×6 label"
+    />
+  </div>
+</body>
+</html>

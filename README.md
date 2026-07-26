@@ -7,12 +7,13 @@ Marketing and legal pages for the [Puzzle Stats](https://puzzlestats.app) iOS ap
 | Page | URL | Purpose |
 |------|-----|---------|
 | Landing | `/` | App marketing, features, pricing |
-| Download | `/download` | iOS & Android store links; supports `?source=` attribution |
 | Privacy Policy | `/privacy.html` | Required for App Store Connect |
 | Support | `/support.html` | Required for App Store Connect |
 | Terms | `/terms.html` | Terms of service |
+| Challenge | `/challenge` | Deep-link landing (`noindex`; not in sitemap) |
+| Download | `/download` | Store redirect / landing; optional `?source=qrcode` (`noindex`; not in sitemap) |
 
-### Download attribution
+## Download attribution
 
 Share campaign links as:
 
@@ -20,14 +21,16 @@ Share campaign links as:
 https://puzzlestats.app/download?source=instagram
 ```
 
-`source` must be alphanumeric (plus `.`, `_`, `-`). It is:
+The source token is read from `source`, `utm_source`, or `ref`, and must be alphanumeric (plus `_` and `-`), max 40 characters. It is:
 
-- Shown lightly on the page (“Via instagram”)
+- Shown lightly on the landing card (“Via instagram”)
 - Passed to the App Store as `ct=` (Apple campaign token)
-- Passed to Google Play as a `referrer` utm when Android is live
-- Pushed to `window.dataLayer` for optional analytics
+- Passed to Google Play inside the `referrer` payload when Android is live
+- Pushed to `window.dataLayer` as `download_page_view`, `store_redirect`, and `store_click`
 
-Update store URLs in `js/site-config.js`. Set `playStoreAvailable: true` and `playStoreURL` when Android ships.
+On iOS and Android the page redirects straight to the store; desktop gets the landing card. Homepage CTAs are tagged `homepage` and the challenge page tags `challenge`.
+
+Store URLs live in `js/site-config.js`. Set `playStoreURL` when Android ships — leave it `null` until then so the UI shows a “Coming soon” placeholder rather than a fake store ID.
 
 ## App Store Connect URLs
 
@@ -74,34 +77,58 @@ If you see "There isn't a GitHub Pages site here", Pages is not enabled yet — 
 
 The site includes:
 
-- **Meta tags** — titles, descriptions, robots, Open Graph, and Twitter cards on every page
+- **Meta tags** — titles, descriptions, robots, Open Graph (`og:url`), canonicals, and Twitter cards (HTTPS `https://puzzlestats.app/...`)
 - **JSON-LD structured data** — `WebSite`, `Organization`, and `SoftwareApplication` on the homepage; `FAQPage` on support (eligible for rich results); breadcrumbs on subpages
-- **Sitemap** — `sitemap.xml` referenced in `robots.txt`
+- **Sitemap** — `https://puzzlestats.app/sitemap.xml` (home, privacy, support, terms). `/challenge` and `/download` are `noindex` and omitted on purpose.
+- **robots.txt** — allows crawl and declares the sitemap URL above
+- **CNAME** — `puzzlestats.app` for GitHub Pages custom domain
 - **OG image** — `assets/og-image.svg` for social sharing previews
+
+No Google verification token is checked into this repo (and none should be invented). Paste the real code from Search Console when you verify.
 
 ### Google Search Console setup
 
-1. Deploy the site to `https://puzzlestats.app`
-2. Go to [Google Search Console](https://search.google.com/search-console)
-3. Add property for `https://puzzlestats.app`
-4. Verify ownership via DNS TXT record (recommended) or HTML file upload
-5. Submit sitemap: `https://puzzlestats.app/sitemap.xml`
-6. Use **URL Inspection** to request indexing of the homepage
+1. Deploy / confirm the live site at `https://puzzlestats.app` (GitHub Pages + Enforce HTTPS).
+2. Open [Google Search Console](https://search.google.com/search-console) → **Add property**.
 
-Optional: add a Google site verification meta tag to each page's `<head>`:
+#### Choose property type
+
+| Type | What to enter | Pros |
+|------|---------------|------|
+| **Domain** (recommended) | `puzzlestats.app` | Covers `https://`, `http://`, `www`, and apex. **DNS TXT only.** |
+| **URL-prefix** | `https://puzzlestats.app/` | Can verify with HTML meta tag, HTML file upload, or DNS. Only covers that exact prefix. |
+
+#### Verify ownership (pick one)
+
+**A. DNS TXT (best with Domain property)**  
+Search Console shows a TXT record like `google-site-verification=...`. Add it at your DNS host for `puzzlestats.app`, wait for propagation, then click **Verify**.
+
+**B. HTML meta tag (URL-prefix only)**  
+Search Console shows a tag such as:
 
 ```html
-<meta name="google-site-verification" content="YOUR_VERIFICATION_CODE">
+<meta name="google-site-verification" content="PASTE_CODE_FROM_GOOGLE">
 ```
+
+Paste **that exact tag** into `index.html` `<head>` where the placeholder comment is (replace `PASTE_CODE_FROM_GOOGLE` with Google’s value — do not invent one). Commit, deploy, then **Verify**.
+
+**C. HTML file upload (URL-prefix only)**  
+Download `googleXXXX.html` from Search Console, place it in the **site root** next to `index.html`, commit, deploy, then **Verify**. Do not invent a filename/token.
+
+3. After verification: **Sitemaps** → submit `https://puzzlestats.app/sitemap.xml`
+4. **URL Inspection** → inspect `https://puzzlestats.app/` → **Request indexing**
 
 For best social preview compatibility, consider exporting `assets/og-image.svg` to a 1200×630 PNG and updating `og:image` URLs.
 
 ## Structure
 
 ```
-├── index.html          # Landing page
+├── index.html          # Landing page (+ GSC meta placeholder comment)
 ├── privacy.html        # Privacy policy
 ├── support.html        # Support & FAQ
+├── terms.html          # Terms of service
+├── challenge/          # Challenge deep links (noindex)
+├── download/           # Store redirect / campaign landing (noindex)
 ├── css/styles.css      # Shared styles
 ├── assets/favicon.svg  # Site icon
 ├── CNAME               # Custom domain for GitHub Pages

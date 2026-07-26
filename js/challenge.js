@@ -237,30 +237,45 @@
         <p class="challenge-copy">${escapeHtml(summaryLine(payload))}</p>
         <div class="challenge-actions">
           <a href="${escapeAttr(toAppDeepLink(global.location.href))}" class="app-store-btn challenge-open" id="challenge-open-app">Open in Puzzle Stats</a>
-          <a href="#" class="app-store-btn app-store-btn--secondary" id="challenge-app-store">Get the app</a>
+          <span class="app-store-btn app-store-btn--soon" id="challenge-app-store" hidden>App Store · Coming soon</span>
+          <a href="#" class="app-store-btn app-store-btn--secondary" id="challenge-app-store-link" hidden>Get the app</a>
         </div>
-        <p class="challenge-note">Opens this challenge in Puzzle Stats on iOS. No account required.</p>
+        <p class="challenge-note" id="challenge-note">Opens this challenge in Puzzle Stats. No account required. App Store listing coming soon.</p>
       </div>
     `;
 
-    const storeBtn = root.querySelector('#challenge-app-store');
-    const downloadBase = (global.PUZZLESTATS && global.PUZZLESTATS.downloadURL) || '/download';
-    const storeURL = downloadBase + (downloadBase.indexOf('?') >= 0 ? '&' : '?') + 'source=challenge';
-    if (storeBtn) {
-      storeBtn.href = storeURL;
+    const baseStoreURL = global.CHALLENGE_APP_STORE_URL || global.PUZZLESTATS?.appStoreURL || null;
+    const placeholderStore = !baseStoreURL || baseStoreURL === '#' || /id0{5,}/.test(String(baseStoreURL));
+    const storeURL = placeholderStore
+      ? baseStoreURL
+      : global.PUZZLESTATS?.withAppStoreCampaign?.(baseStoreURL, 'challenge') || baseStoreURL;
+    const soonBadge = root.querySelector('#challenge-app-store');
+    const storeLink = root.querySelector('#challenge-app-store-link');
+    const note = root.querySelector('#challenge-note');
+
+    if (placeholderStore) {
+      if (soonBadge) soonBadge.hidden = false;
+    } else if (storeLink) {
+      storeLink.hidden = false;
+      storeLink.href = storeURL;
+      storeLink.target = '_blank';
+      storeLink.rel = 'noopener noreferrer';
+      if (note) {
+        note.textContent = 'Opens this challenge in Puzzle Stats. No account required. Get the app on the App Store if you need it.';
+      }
     }
 
     const openBtn = root.querySelector('#challenge-open-app');
     if (openBtn) {
       openBtn.addEventListener('click', function (event) {
         // Safari does not open Universal Links for same-domain taps.
-        // Use the custom scheme, then fall back to /download if the app is not installed.
+        // Use the custom scheme, then fall back to the App Store if the app is not installed.
         event.preventDefault();
         const deepLink = toAppDeepLink(global.location.href);
         const started = Date.now();
         global.location.href = deepLink;
 
-        if (!storeURL || storeURL === '#') return;
+        if (placeholderStore) return;
 
         setTimeout(function () {
           if (document.hidden || document.webkitHidden) return;
