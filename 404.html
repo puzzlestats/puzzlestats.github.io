@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Challenge — Puzzle Stats</title>
+  <title>Puzzle Stats</title>
   <meta name="robots" content="noindex">
   <meta name="theme-color" content="#f6f3ee">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -11,7 +11,7 @@
   <script>
     (function () {
       var path = window.location.pathname;
-      if (/^\/c\/v1\//.test(path)) {
+      if (/^\/c\/v1\//.test(path) || /^\/s\/v1\//.test(path)) {
         document.documentElement.classList.add('is-challenge-route');
       }
     })();
@@ -41,16 +41,23 @@
 
   <script src="/js/site-config.js"></script>
   <script src="/js/challenge.js"></script>
+  <script src="/js/share.js"></script>
   <script>
     (function () {
-      var isCompact = /^\/c\/v1\//.test(window.location.pathname);
-      if (!isCompact) return;
+      var path = window.location.pathname;
+      var isChallengeCompact = /^\/c\/v1\//.test(path);
+      var isShareCompact = /^\/s\/v1\//.test(path);
+      if (!isChallengeCompact && !isShareCompact) return;
 
       document.getElementById('error-main').hidden = true;
       document.getElementById('challenge-header').hidden = false;
       document.getElementById('challenge-main').hidden = false;
 
-      ChallengeShare.bootstrap({});
+      if (isShareCompact) {
+        TimeShare.bootstrap({});
+      } else {
+        ChallengeShare.bootstrap({});
+      }
     })();
   </script>
 </body>

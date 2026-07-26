@@ -10,7 +10,8 @@ Marketing and legal pages for the [Puzzle Stats](https://puzzlestats.app) iOS ap
 | Privacy Policy | `/privacy.html` | Required for App Store Connect |
 | Support | `/support.html` | Required for App Store Connect |
 | Terms | `/terms.html` | Terms of service |
-| Challenge | `/challenge` | Deep-link landing (`noindex`; not in sitemap) |
+| Challenge | `/challenge` | Challenge deep-link landing (`noindex`; not in sitemap) |
+| Shared time | `/share` | Non-challenge time-share landing (`noindex`; not in sitemap) |
 | Download | `/download` | Store redirect / landing; optional `?source=qrcode` (`noindex`; not in sitemap) |
 
 ## Download attribution
@@ -79,7 +80,7 @@ The site includes:
 
 - **Meta tags** — titles, descriptions, robots, Open Graph (`og:url`), canonicals, and Twitter cards (HTTPS `https://puzzlestats.app/...`)
 - **JSON-LD structured data** — `WebSite`, `Organization`, and `SoftwareApplication` on the homepage; `FAQPage` on support (eligible for rich results); breadcrumbs on subpages
-- **Sitemap** — `https://puzzlestats.app/sitemap.xml` (home, privacy, support, terms). `/challenge` and `/download` are `noindex` and omitted on purpose.
+- **Sitemap** — `https://puzzlestats.app/sitemap.xml` (home, privacy, support, terms). `/challenge`, `/share`, and `/download` are `noindex` and omitted on purpose.
 - **robots.txt** — allows crawl and declares the sitemap URL above
 - **CNAME** — `puzzlestats.app` for GitHub Pages custom domain
 - **OG image** — `assets/og-image.svg` for social sharing previews
@@ -128,6 +129,7 @@ For best social preview compatibility, consider exporting `assets/og-image.svg` 
 ├── support.html        # Support & FAQ
 ├── terms.html          # Terms of service
 ├── challenge/          # Challenge deep links (noindex)
+├── share/              # Time-share deep links (noindex)
 ├── download/           # Store redirect / campaign landing (noindex)
 ├── css/styles.css      # Shared styles
 ├── assets/favicon.svg  # Site icon
